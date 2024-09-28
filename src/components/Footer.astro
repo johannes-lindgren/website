@@ -4,12 +4,10 @@ import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
 ---
 
-<footer class="animate">
-  <Container>
-    <div class="relative">
-      <div class="absolute -top-12 right-0">
-        <BackToTop />
-      </div>
+<footer class="animate py-10">
+  <div class="flex flex-col gap-12">
+    <div class="self-end">
+      <BackToTop />
     </div>
     <div class="flex items-center justify-between">
       <div>&copy; {new Date().getFullYear()} • {SITE.TITLE} 🔬</div>
@@ -86,5 +84,5 @@ import BackToTop from "@components/BackToTop.astro";
         </button>
       </div>
     </div>
-  </Container>
+  </div>
 </footer>

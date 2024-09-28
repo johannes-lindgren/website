@@ -24,6 +24,7 @@ const { Content, headings } = await project.render();
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
+  <TableOfContents headings={headings} slot="aside"/>
   <Container>
     <div class="animate">
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>
@@ -59,7 +60,6 @@ const { Content, headings } = await project.render();
         )
       }
     </div>
-    <TableOfContents headings={headings} />
     <article class="animate">
       <Content />
     </article>
