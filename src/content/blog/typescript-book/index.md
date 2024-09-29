@@ -75,8 +75,8 @@ In this sense, we can understand TypeScript more as a powerful linter, rather th
 
 Excluding the type annotations (and a couple of TypeScript-specific features), all valid TypeScript programs are valid JavaScript programs. But not all valid JavaScript programs are able to pass TypeScript's type checker. While you might have heard otherwise, in this sense, TypeScript is a _subset_ of JavaScriptWith—not the other way around:
 
-.All programs that pass the type checker are valid JavaScript programs, but not all valid JavaScript programs pass the type checker; hence TypeScript is a subset of JavaScript.
-image::ts-js-subset.svg[]
+![](images/ts-js-subset.svg)
+_All programs that pass the type checker are valid JavaScript programs, but not all valid JavaScript programs pass the type checker; hence TypeScript is a subset of JavaScript._
 
 NOTE: Because TypeScript adds new syntax and features to the language, from a certain point of view, TypeScript can be considered a superset of JavaScript: while most JavaScript programs cannot pass the type checker, all be compiled by TypeScript; but not all TypeScript programs can be run as JavaScript. Though, since TypeScript is seldom used as a compiler nowadays, this point of view is less relevant.
 
@@ -85,18 +85,14 @@ NOTE: Because TypeScript adds new syntax and features to the language, from a ce
 In JavaScript we deal exclusively with values:
 
 ```javascript
-
-```
-
 const age = 42
-
 ````
 
 A value is something that can be stored in memory while the program is running. A value identifier points to a value. The convention is to name value identifiers with lower camel case.
 
 In TypeScript, we also consider the _sets of values_ that our value identifiers are allowed to reference: these sets are called _types_. We can create identifiers that refer to types, and the convention is to name these with upper camel case. For example, we could construct a type `Digit` that represents the set of the numbers 0–9:
 
-image:Digit.svg[]
+![](images/Digit.svg)
 
 We can now annotate a value `digit` with the type `Digit` to tell TypeScript that whatever value is in `digit`, it must be one of the values in `Digit`:
 
@@ -129,7 +125,7 @@ We're going to explore the various types in TypeScript, starting with the most p
 Since a type represents a set of values, there exists a type that represents the _empty set_: this type is called `never`.
 
 .The never type doesn't contain any values.
-image:never.svg[]
+![](images/never.svg)
 
 In JavaScript, a value identifier always has a value, even if that value is `undefined`. Therefore, it is impossible to have an identifier with the type `never`. What use it is this type then? Later, we will learn that you can perform various operations on types, and sometimes, the `never` type shows up as a result of these operations. For now, it will not be important, but it's good to know that it exists to understand that types really are like sets.
 
@@ -147,18 +143,18 @@ This just tells us that `nothing` can only ever have one value: `undefined`. Not
 
 So the values `undefined`, `true`, `false`, `123`, and `"hello"` can be either values or types depending on where in the syntax tree they appear. For example, if a literal appears directly after an assigment operator (`=`), it is a value; but if it appears after the colons (`:`) after a variable declaration, it is a type.
 
-.Literal types contain a single value.
-image:primitive-types.svg[]
+![](images/primitive-types.svg)
+_Literal types contain a single value._
 
 ### Union Type Operator
 
 Value types are not very interesting on their own--they get much more interesting when they're combined into larger types. Consider the two types `true` and `false`:
 
-image:true-and-false.svg[]
+![](images/true-and-false.svg)
 
 TypeScript has _type operators_ that let you combine types in various ways. One of these operators is the _type union operator_ `|`, which lets you combine two types into a new type that contains all values from both operands. Since types correspond to sets, the union operator `|` corresponds to the set union operator stem:[\uu]:
 
-image:boolean.svg[]
+![](images/boolean.svg)
 
 In TypeScript, this can be written as such:
 
@@ -564,7 +560,7 @@ const b: A = {};
 
 Consider a type that is a union between two smaller types; for example `number | undefined`:
 
-image:type-guard.diagrams.svg[]
+![](images/type-guard.diagrams.svg)
 
 If you want to use the value as a number, you first need to check that it' not `undefined` before you can use it. This is called a _type guard_.
 
@@ -908,12 +904,11 @@ While you're likely quite familiar with functions already, let's pause for a mom
 
 A function can be though of a map from one value to another. To represent any function, simply write down a list of all inputs and the corresponding output; for example, the logical NOT can be represented as:
 
-[cols="1,1"]
-|===
-| Input value | Output value
-| `true` | `false`
-| `false` | `true`
-|===
+
+| Input value | Output value |
+|-------------|--------------|
+| `true`      | `false`      |
+| `false`     | `true`       |
 
 Since the input is of type `boolean`, there are only two possible inputs (`true` and `false`), and thus the table contains two rows. The type of this function is:
 
@@ -931,14 +926,12 @@ type Not = (a: boolean) => boolean;
 
 Functions with multiple arguments can be thought of functions with a single argument where the argument is a tuple; for example, the logical AND can be represented as:
 
-[cols="1,1"]
-|===
-| Input value | Output value
-| (`true, true`) | `true`
-| (`true, false`) | `false`
-| (`false, true`) | `false`
-| (`false, false`)| `false`
-|===
+| Input value      | Output value |
+|------------------|--------------|
+| (`true, true`)   | `true`       |
+| (`true, false`)  | `false`      |
+| (`false, true`)  | `false`      |
+| (`false, false`) | `false`      |
 
 Where the type of this function is:
 
@@ -992,14 +985,13 @@ Similarly to the relationships between values and functions, a type can be param
 
 For example, consider a table that maps one set of type to another type, and let's figure out what it means:
 
-[cols="1,1"]
-|===
-| Input type | Output type
-| `number` | `[number, number]`
-| `string` | `[string, string]`
-| `boolean` | `[boolean, boolean]`
-| ... | ...
-|===
+| Input type | Output type          |
+|------------|----------------------|
+| `number`   | `[number, number]`   |
+| `string`   | `[string, string]`   |
+| `boolean`  | `[boolean, boolean]` |
+| ...        | ...                  |
+
 .What would be a suitable name for this parameterized type? The answer is in the text below.
 
 Please note that the entries in the table are not values, they are _types_. What we are dealing with is a **kind of** function that you give a type and returns a new type back to you--a parameterized type, or in TypeScript more commonly referred to as _generic_ type.
@@ -1202,7 +1194,7 @@ type C = A & B;
 ```
 
 .The result of the intersection is a type that contain the values that exists in both sets; in this example `2 | 3`.
-image:intersection.svg[]
+![](images/intersection.svg)
 
 There are two interesting special cases to consider--intersections with `never` and `unknown`:
 
@@ -1239,7 +1231,7 @@ type Styleable = {
 
 It consists of _all_ objects where the `color` and `background` properties are `string`:
 
-image:Stylable.svg[]
+![](images/Stylable.svg)
 
 Note that this type does not forbid extra properties--the only requirement is that the `color` and `backgroundColor` properties have the type `string`, but it does not impose restrictions on other properties.
 
@@ -1253,7 +1245,7 @@ type Clickable = {
 
 This type consists of all objects where the `onClick` property is a function that returns `void`. As with `Styleable`, it does not impose limitations on other properties:
 
-image:Clickable.svg[]
+![](images/Clickable.svg)
 
 When we take the intersection of `Styleable` and `Clickable`, we get the type of all objects that have `color`, `backgroundColor`, and `onClick` properties:
 
@@ -1262,7 +1254,7 @@ When we take the intersection of `Styleable` and `Clickable`, we get the type of
 type Button = Styleable & Clickable;
 ```
 
-image:StylableAndClickable.svg[]
+![](images/StylableAndClickable.svg)
 
 But be mindful of using intersections on types that do not overlap. Let's start with a simple example:
 
@@ -1275,7 +1267,7 @@ type OddAndEvenDigit = Even & Odd;
 
 Which digits are both even and odd? Obviously, such number does not exist, so the set of both even and odd number is empty, which means that the type is `never`
 
-image:intersection-never.svg[]
+![](images/intersection-never.svg)
 
 When performing intersections on object types, you're likely to at some point encounter scenarios where some properties resolve to `never`. Consider this intersection:
 
