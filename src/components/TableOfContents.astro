@@ -27,20 +27,12 @@ function buildToc(headings: Heading[]) {
 }
 ---
 
-<ul class="list-none">
+<ol>
   {toc.map((heading) => <TableOfContentsHeading heading={heading} />)}
-</ul>
+</ol>
 
 <style>
-  summary {
-    @apply cursor-pointer rounded-t-lg px-3 py-1.5 font-medium transition-colors;
-  }
-
-  summary:hover {
-    @apply bg-black/5 dark:bg-white/5;
-  }
-
-  details[open] summary {
-    @apply bg-black/5 dark:bg-white/5;
+  ol {
+    counter-reset: item;
   }
 </style>
