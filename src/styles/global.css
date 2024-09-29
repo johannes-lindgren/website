@@ -118,3 +118,15 @@ pre {
 .copy-code:active {
   @apply scale-90 transition-transform;
 }
+
+.tangerine-regular {
+  font-family: "Tangerine", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.tangerine-bold {
+  font-family: "Tangerine", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
