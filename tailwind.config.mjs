@@ -9,6 +9,9 @@ export default {
         sans: ["Geist Sans", ...defaultTheme.fontFamily.sans],
         mono: ["Geist Mono", ...defaultTheme.fontFamily.mono],
       },
+      screens: {
+        'touch': { 'raw': '(pointer: coarse)' },
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

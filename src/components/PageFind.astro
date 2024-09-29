@@ -1,5 +1,6 @@
 ---
 import Search from "astro-pagefind/components/Search";
+import Key from "./Key.astro";
 ---
 
 <aside data-pagefind-ignore>
@@ -21,10 +22,15 @@ import Search from "astro-pagefind/components/Search";
           resetStyles: false,
         }}
       />
-      <div class="mr-2 pb-1 pt-4 text-right text-xs dark:prose-invert">
-        Press <span class="prose text-xs dark:prose-invert"
-          ><kbd class="">Esc</kbd></span
-        > or click anywhere to close
+      <div
+        class="touch:hidden mr-2 pb-1 pt-4 text-right text-xs dark:prose-invert"
+      >
+        Press <Key>Esc</Key> or click anywhere to close
+      </div>
+      <div
+        class="touch:block mr-2 hidden pb-1 pt-4 text-right text-xs dark:prose-invert"
+      >
+        Click outside to close
       </div>
     </div>
   </div>
@@ -115,6 +121,12 @@ import Search from "astro-pagefind/components/Search";
 
   #search input {
     font-weight: normal;
+  }
+
+  #search input:focus-visible {
+    font-weight: normal;
+    border: 2px solid var(--pagefind-ui-border);
+    outline: none;
   }
 
   #search p {
