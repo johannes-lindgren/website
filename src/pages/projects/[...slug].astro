@@ -24,7 +24,10 @@ const { Content, headings } = await project.render();
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
-  <TableOfContents headings={headings} slot="aside"/>
+  <TableOfContents
+    headings={headings}
+    slot={headings.length > 0 ? "aside" : ""}
+  />
   <Container>
     <div class="animate">
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>

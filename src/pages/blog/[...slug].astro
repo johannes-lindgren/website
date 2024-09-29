@@ -52,7 +52,7 @@ const { Content, headings } = await post.render();
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
-  <TableOfContents headings={headings} slot="aside" />
+  {headings.length > 0 && <TableOfContents headings={headings} slot="aside" />}
   <Container>
     <div class="animate">
       <BackToPrevious href="/blog">Back to blog</BackToPrevious>
