@@ -1,0 +1,73 @@
+/* Set up the counter for the document */
+body {
+    counter-reset: h2;
+}
+
+.icon-link {
+    display: block;
+    @apply w-4 h-4;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>') no-repeat center;
+    background-size: contain;
+
+    opacity: 0;
+    @apply transition-opacity;
+}
+
+:is(h2, h3, h4, h5, h6) > a {
+    text-decoration: none;
+    display: inline-flex;
+    @apply pl-2;
+}
+
+:is(h2, h3, h4, h5, h6):hover {
+}
+
+
+:is(h2, h3, h4, h5, h6):hover > a > .icon-link {
+    opacity: 1;
+}
+
+h2 {
+    counter-reset: h3; /* Reset h3 counter every time a new h2 starts */
+}
+
+h3 {
+    counter-reset: h4; /* Reset h4 counter every time a new h3 starts */
+}
+
+h4 {
+    counter-reset: h5; /* Reset h5 counter every time a new h4 starts */
+}
+
+h5 {
+    counter-reset: h6; /* Reset h6 counter every time a new h5 starts */
+}
+
+/* Style for h2 - increments the main counter */
+h2::before {
+    counter-increment: h2;
+    content: counter(h2) ". "; /* Displays the h2 numbering */
+}
+
+/* Style for h3 - uses h2 as a base and increments h3 */
+h3::before {
+    counter-increment: h3;
+    content: counter(h2) "." counter(h3) ". "; /* Displays the h3 numbering (e.g., 1.1) */
+}
+
+/* Style for h4 - uses h3 as a base and increments h4 */
+h4::before {
+    counter-increment: h4;
+    content: counter(h2) "." counter(h3) "." counter(h4) ". "; /* Displays the h4 numbering (e.g., 1.1.1) */
+}
+
+/* Continue for deeper levels if needed */
+h5::before {
+    counter-increment: h5;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "; /* Displays the h5 numbering */
+}
+
+h6::before {
+    counter-increment: h6;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "; /* Displays the h6 numbering */
+}

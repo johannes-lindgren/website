@@ -8,6 +8,7 @@ import BackToPrevious from "@components/BackToPrevious.astro";
 import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import Giscus from "@components/Giscus.astro";
+import Signature from "../../components/Signature.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -74,10 +75,11 @@ const { Content, headings } = await post.render();
     <!--{headings.length > 0 && <TableOfContents headings={headings} />}-->
     <article class="animate">
       <Content />
-      <div class="mt-24">
+      <Signature class="mt-12 text-right text-xl font-extralight" />
+      <div class="mt-12">
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
       </div>
-      <div class="mt-24">
+      <div class="mt-12">
         <Giscus />
       </div>
     </article>

@@ -3,15 +3,16 @@ import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
 import Key from "@components/Key.astro";
 import { SITE } from "@consts";
+import Signature from "./Signature.astro";
 ---
 
 <header transition:persist>
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
       <Link href="/" underline={false}>
-        <div class="page-header font-semibold">
+        <Signature class="text-xl font-extralight">
           {SITE.TITLE}
-        </div>
+        </Signature>
       </Link>
       <nav class="flex items-center gap-4 text-sm">
         <Link href="/blog">Blog</Link>
@@ -57,12 +58,3 @@ import { SITE } from "@consts";
     </div>
   </Container>
 </header>
-
-<style>
-  .page-header {
-    font-family: "DistantGalaxy", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: large;
-  }
-</style>
