@@ -1,20 +1,27 @@
 <div class="giscus"></div>
 
-<script
-  is:inline
-  data-astro-rerun
-  src="https://giscus.app/client.js"
-  data-repo="trevortylerlee/astro-micro"
-  data-repo-id="R_kgDOL_6l9Q"
-  data-category="Announcements"
-  data-category-id="DIC_kwDOL_6l9c4Cfk55"
-  data-mapping="pathname"
-  data-strict="0"
-  data-reactions-enabled="1"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="preferred_color_scheme"
-  data-lang="en"
-  data-loading="lazy"
-  crossorigin="anonymous"
-  async></script>
+<script is:inline>
+  // Listen for script load event to call setGiscusTheme
+  const giscusScript = document.createElement("script");
+  giscusScript.src = "https://giscus.app/client.js";
+  giscusScript.setAttribute("data-repo", "johannes-lindgren/website");
+  giscusScript.setAttribute("data-repo-id", "R_kgDOM4gzTA");
+  giscusScript.setAttribute("data-category", "Announcements");
+  giscusScript.setAttribute("data-category-id", "DIC_kwDOM4gzTM4Ci7_C");
+  giscusScript.setAttribute("data-mapping", "pathname");
+  giscusScript.setAttribute("data-strict", "1");
+  giscusScript.setAttribute("data-reactions-enabled", "1");
+  giscusScript.setAttribute("data-emit-metadata", "0");
+  giscusScript.setAttribute("data-input-position", "top");
+  giscusScript.setAttribute("data-theme", "preferred_color_scheme");
+  giscusScript.setAttribute("data-lang", "en");
+  giscusScript.setAttribute("data-loading", "lazy");
+  giscusScript.crossOrigin = "anonymous";
+  giscusScript.async = true;
+
+  giscusScript.onload = () => {
+    setGiscusTheme();
+  };
+
+  document.body.appendChild(giscusScript);
+</script>
