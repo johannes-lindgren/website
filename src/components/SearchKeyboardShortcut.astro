@@ -1,0 +1,19 @@
+---
+import Key from "./Key.astro";
+---
+
+<>
+  {
+    navigator.userAgent.includes("Mac") ? (
+      <>
+        <Key>⌘</Key>
+        <Key>K</Key>
+      </>
+    ) : (
+      <>
+        <Key>Ctrl</Key>
+        <Key>K</Key>
+      </>
+    )
+  }
+</>

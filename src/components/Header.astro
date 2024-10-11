@@ -1,11 +1,10 @@
 ---
 import Container from "@components/Container.astro";
+import SearchKeyboardShortcut from "@components/SearchKeyboardShortcut.astro";
 import Link from "@components/Link.astro";
 import Key from "@components/Key.astro";
 import { SITE } from "@consts";
 import Signature from "./Signature.astro";
-
-const isMac = navigator.userAgent.includes("Mac");
 ---
 
 <header transition:persist>
@@ -41,19 +40,7 @@ const isMac = navigator.userAgent.includes("Mac");
             Search</span
           >
           <span class="flex gap-1 opacity-50 touch:hidden">
-            {
-              isMac ? (
-                <>
-                  <Key>⌘</Key>
-                  <Key>K</Key>
-                </>
-              ) : (
-                <>
-                  <Key>Ctrl</Key>
-                  <Key>K</Key>
-                </>
-              )
-            }
+            <SearchKeyboardShortcut client:load />
           </span>
         </button>
       </nav>
