@@ -1,6 +1,10 @@
 ---
-
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
 ---
 
-<span class="prose text-xs dark:prose-invert"><kbd class=""><slot /></kbd></span
+<span class={`prose text-xs dark:prose-invert ${className ?? ""}`}
+  ><kbd class=""><slot /></kbd></span
 >
