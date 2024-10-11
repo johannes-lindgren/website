@@ -7,17 +7,35 @@ import Link from "./Link.astro";
 const { heading } = Astro.props;
 ---
 
-<li class="list-inside list-disc px-6 py-1.5 text-sm">
-  <Link href={"#" + heading.slug} underline>
-    {heading.text}
-  </Link>
+<li class="py-1 text-sm">
+  <div class="flex gap-1">
+    <span class="counter"></span>
+    <Link href={"#" + heading.slug} underline>
+      {heading.text}
+    </Link>
+  </div>
   {
     heading.subheadings.length > 0 && (
-      <ul class="translate-x-3">
+      <ol class="pl-4 pt-1">
         {heading.subheadings.map((subheading: Heading) => (
           <Astro.self heading={subheading} />
         ))}
-      </ul>
+      </ol>
     )
   }
 </li>
+
+<style>
+  ol {
+    counter-reset: item;
+  }
+  .counter {
+    list-style: none;
+    list-style-position: outside;
+    word-wrap: break-word;
+  }
+  .counter::before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/global-article.css";
 import { ViewTransitions } from "astro:transitions";
 
 import "@fontsource/geist-sans/100.css";
@@ -34,6 +35,7 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
+
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link
@@ -184,8 +186,8 @@ const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
              -ms-transition: none !important;
              transition: none !important;
           }
-        `
-      )
+        `,
+      ),
     );
 
     document.head.appendChild(css);
