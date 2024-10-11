@@ -10,7 +10,8 @@ export const SITE: Site = {
 
 export const HOME: Metadata = {
   TITLE: "Home",
-  DESCRIPTION: "Astro Micro is an accessible theme for Astro.",
+  DESCRIPTION:
+    "Johannes Lindgren's Website Micro is an accessible theme for Astro.",
 };
 
 export const BLOG: Metadata = {
@@ -30,7 +31,12 @@ export const SOCIALS: Socials = [
     HREF: "https://github.com/johannes-lindgren",
   },
   {
+    NAME: "Dev.to (coming soon)",
+    // TODO
+    HREF: "/",
+  },
+  {
     NAME: "LinkedIn",
-    HREF: "https://www.linkedin.com/in/todo",
+    HREF: "https://www.linkedin.com/in/johanneslindgren",
   },
 ];
