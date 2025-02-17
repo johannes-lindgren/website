@@ -24,8 +24,7 @@ Without this, TypeScript will not be able to check that your components are impo
 
 ## HTML Attributes as Props
 
-> [!NOTE]
-> This requires Vue >=3.5.0 or above
+**NOTE**: This requires Vue >=3.5.0 or above.
 
 Vue has a feature called "Fallthrough Attributes":
 
