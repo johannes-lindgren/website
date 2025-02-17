@@ -1,6 +1,9 @@
 // .prettierrc.mjs
 /** @type {import("prettier").Config} */
-export default {
+module.exports = {
+  singleAttributePerLine: true,
+  singleQuote: true,
+  semi: false,
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   overrides: [
     {
