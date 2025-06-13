@@ -1,32 +1,35 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container.astro";
-import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime } from "@lib/utils";
-import BackToPrevious from "@components/BackToPrevious.astro";
-import Link from "@components/Link.astro";
-import TableOfContents from "@components/TableOfContents.astro";
+import { type CollectionEntry, getCollection } from 'astro:content'
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/Container.astro'
+import FormattedDate from '@components/FormattedDate.astro'
+import { readingTime } from '@lib/utils'
+import BackToPrevious from '@components/BackToPrevious.astro'
+import Link from '@components/Link.astro'
+import TableOfContents from '@components/TableOfContents.astro'
 
 export async function getStaticPaths() {
-  const projects = (await getCollection("projects"))
+  const projects = (await getCollection('projects'))
     .filter((post) => !post.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   return projects.map((project) => ({
     params: { slug: project.slug },
     props: project,
-  }));
+  }))
 }
-type Props = CollectionEntry<"projects">;
+type Props = CollectionEntry<'projects'>
 
-const project = Astro.props;
-const { Content, headings } = await project.render();
+const project = Astro.props
+const { Content, headings } = await project.render()
 ---
 
-<Layout title={project.data.title} description={project.data.description}>
+<Layout
+  title={project.data.title}
+  description={project.data.description}
+>
   <TableOfContents
     headings={headings}
-    slot={headings.length > 0 ? "aside" : ""}
+    slot={headings.length > 0 ? 'aside' : ''}
   />
   <Container>
     <div class="animate">
@@ -46,17 +49,34 @@ const { Content, headings } = await project.render();
         {project.data.title}
       </h1>
       {
-        (project.data.demoURL || project.data.repoURL) && (
+        (project.data.demoURL ||
+          project.data.repoURL ||
+          project.data.websiteURL) && (
           <nav class="flex gap-1">
             {project.data.demoURL && (
-              <Link href={project.data.demoURL} external>
+              <Link
+                href={project.data.demoURL}
+                external
+              >
                 demo
               </Link>
             )}
             {project.data.demoURL && project.data.repoURL && <span>/</span>}
             {project.data.repoURL && (
-              <Link href={project.data.repoURL} external>
+              <Link
+                href={project.data.repoURL}
+                external
+              >
                 repo
+              </Link>
+            )}
+            {project.data.repoURL && project.data.websiteURL && <span>/</span>}
+            {project.data.websiteURL && (
+              <Link
+                href={project.data.websiteURL}
+                external
+              >
+                website
               </Link>
             )}
           </nav>
