@@ -4,6 +4,10 @@ description: "Book"
 date: "2024-10-10"
 ---
 
+## Assumption
+
+- There is no magic, no miracles, no gods.
+
 ## The Different Sources of Exodus
 
 ## Israel in Egypt
@@ -23,7 +27,7 @@ Exodus makes no secret of Moses' Egyptian heritage:
 > And the boy grew older, and she brought him to Pharaoh's daughter, and he became her son. And she called his name Moses, and she said, "Because I drew him from the water." [J]
 > — Exodus 2:10
 
-In both Hebrew and Egyptian, Moses is spelled "MSS". _MSS_ means "son" or "heir"; for example, Ramses—spelled "RMSS"—means "son of Ra". The author of _J_ likely did not understand that Moses really was an Egyptian name, so attributed it to a word that sounded similar in Hebrew. Even _if_ Moses was Hebrew, why would his adoptive mother give him a Hebrew name?
+In both Hebrew and Egyptian, Moses is spelled "mss". _Mss_ means "son" or "heir", which implies that _Moses_ alone could not have been his full name. For example, Ramses—spelled "rmss"—means "son/heir of Ra", and since it is spelled without vowels, _Ramses_ is just a valid name as _Ramoses_. The author of _J_ likely did not understand that Moses really was an Egyptian name, but attributed it to a word that sounded similar in Hebrew and tied it to the story. Even _if_ Moses was Hebrew, why would his adoptive, _Egyptian_ mother give him a Hebrew name?
 
 _J_ and _E_ tells the story of how Moses was left in a basket in the Nile river, where he was found by the Pharaoh's daughter. But this story occurs in many other cultures—such as the story of Sargon of Akkad. It is unlikely that Moses was the origin of this story, and so we may consider it a construct to make Moses appear to be an Israelite, when in reality, he was an Egyptian. Would the Pharaoh not have noticed that his daughter never got pregnant, or questioned why she was suddenly raising a child of unknown origin?
 
@@ -37,7 +41,9 @@ Moses appeals to YHWH, stating that he is "heavy of mouth and heavy of tongue". 
 
 A Levite is a member of the tribe of Levi—one of the twelve tribes of Israel. So Aaron, a Levite, will be Moses' mouthpiece to the Israelite people. This is a further indication that Moses does not speak Hebrew—he needs a translator.
 
-Aaron in the Bible is also not Moses' literal brother, or YHWH would not have had to specify that he is a Levite. Moses, an Egyptian, would certainly not have any Israelite siblings.
+Aaron in the Bible is also not Moses' literal brother, or YHWH would not have had to specify that he is a Levite. Moses, an Egyptian, would certainly not have any Israelite siblings. There is also this passage from Moses' dialogue with Jethro, before he leaves for Egypt, where he refers to the Israelites as his "brothers":
+
+> And he [Moses] went back to Jether [Jethro], his father-in-law, and said to him, "Let me go so I may go back to my brothers who are in Egypt and see if they're still living".
 
 > And Moses went, and Aaron, and they gathered all the elders of the children of Israel. [E]
 > — Exodus 4:29
@@ -59,7 +65,49 @@ The nobility was the warrior class, and so the Pharaoh would have been the highe
 > And the children of Israel went up armed from the land of Egypt. [E]
 > — Exodus 13:18
 
-As we will soon see, this army ransacks Egypt and defeats the Egyptian army in a pitched battle.
+As we will soon see, this army ransacks Egypt and defeats the Egyptian army in a pitched battle. But for our intents and purposes at this moment is for us to understand that Moses is of the warrior class.
+
+## Moses' Alliance
+
+Not much is said about Moses' time before marriage. The only thing we are told is that he murdered an Egyptian man and got found out:
+
+> He turned this way and that way, and saw that there was no man, and he struck the Egyptian and hid him in the sand.
+> And he went out on the second day, and here were two Hebrew men fighting, and he said to the one who was wrong, "Why would you strike your companion?"
+> And he said, "Who made you a commander and a judge over us? Are you saying to kill me as you saying you'd kill me—the way you killed the Egyptian?!"
+> And Moses was afraid, and he said, "The thing is known for sure." [J]
+> — Exodus 2:12–14
+
+If anything is to be believed in this episode, it is that Moses had a violent past.
+
+Pharaoh soon finds out about the crime, which forces Moses to flee to the land of Midian:
+
+> And Pharaoh heard this thing, and he sought to kill Moses. And Moses fled from Pharaoh, and he dwelt in the land of Midian. [J]
+> — Exodus 2:15
+
+The land of Midian lies to the east of the Sinai peninsula.
+
+![img.png](the-land-of-midian.png)
+
+There, he meets a local priest named Jethro (or Reuel, depending on the source), whose daugher he marries. He must have spent a few years there, for she bears him a son, and the Pharaoh dies:
+
+> And Moses was content to live with the man. And he gave Ziporah, his daughter, to Moses. And she bore him a son, and he called his name Gershom, because he said, "I was a stranger in a foreign land."
+> And it was in those many days, and the king of Egypt died. [J]
+> — Exodus 2:21–23
+
+After the Exodus, Moses emerges on the Sinai peninsula, where he meets up with Jethro:
+
+> And Jethro, Moses' father-in-law, and his sons and his wife came to Moses, to the wilderness in which he was encamped, at the Mountain of God. [E]
+> — Exodus 18:5
+
+Moses convinces his brother-in-law, Hobab, to join him in his journey to the promised land, which he intends to conquer.
+
+> And Moses said to Hobab, the son of Reuel (Jethro) the Midianite, Moses' father-in-law, "We are journeying to the place that YHWH said, 'I will give it to you'. Come with us, and we will do good to you, because YHWH has spoken good regarding Israel."
+> And he said to him, "I will not go, but I will go to my land and to my birthplace."
+> And he said, "Don't leave us, because you know the way we should camp in the wildnerness, and you will be eyes for us. And it will be, if you go with us, that we will do good for you in proportion to the good that YHWH will do for us" [J]
+
+Is Moses promising Hobab a share of the spoils of war?
+
+The story of _J_ continues a few chapters later:
 
 ## The Ransacking of Egypt
 
@@ -99,7 +147,7 @@ An contemporary army, marching through the desert, would have moved in a column,
 
 It sounds like the story is being told from the perspective of a camp follower—a non-combatant in the baggage train who interprets the sight of the great column of dust as a presence of a deity.
 
-Sun Tzu made a similar observation of enemy armies kicking up "columns" of dust:
+Sun Tzu made a similar observation of how enemy armies would kick up "columns" of dust:
 
 > When there is dust rising in a high column, it is the sign of chariots advancing; when the dust is low, but spread over a wide area, it betokens the approach of infantry.
 > — Sun Tzu, The Art of War, The Army on the March
@@ -205,7 +253,11 @@ Here, YHWH is not mentioned as a combatant. Clearly, the Israelites are describe
 
 The wilderness of the Sinai peninsula were where Egypt ended.
 
-## Uncategorized
+## TODO
+
+- [ ] What kind of people are the israelies? (Herders)
+
+### Uncategorised
 
 This has not been incorporated into the rest of the text yet:
 
