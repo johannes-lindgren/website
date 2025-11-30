@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/Container.astro'
+import ArrowCard from '@components/ArrowCard.astro'
+import ArrowIcon from '@components/ArrowIcon.astro'
+import { WINE } from '@consts.ts'
+
+const wine = (await getCollection('wine'))
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+---
+
+<Layout
+  title={WINE.TITLE}
+  description={WINE.DESCRIPTION}
+>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-10">
+        <h1 class="animate font-semibold text-black dark:text-white">Wine</h1>
+        <p>Here are some wine-related things.</p>
+        <div class="not-prose animate">
+          <a
+            href="https://www.vivino.com/users/johannes.lindgren1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center gap-4 rounded-lg border-2 border-[#7B1E3A] bg-[#7B1E3A] px-6 py-4 shadow-md transition-all duration-200 hover:scale-[1.03] hover:shadow-lg focus-visible:scale-[1.03] focus-visible:shadow-lg"
+            style="color:#fff;"
+          >
+            <img
+              src="/src/pages/wine/vivino-logo.png"
+              alt="Vivino logo"
+              class="h-12 w-12 border border-[#fff] bg-[#7B1E3A] shadow"
+              loading="lazy"
+              style="object-fit: contain;"
+            />
+            <div class="flex flex-col justify-center">
+              <span
+                class="text-lg font-bold"
+                style="color:#fff;"
+                >Vivino Profile</span
+              >
+              <span
+                class="text-sm font-medium"
+                style="color:#fff;"
+                >See my wine reviews</span
+              >
+            </div>
+            <ArrowIcon class="ml-auto size-5 fill-none stroke-white stroke-2" />
+          </a>
+        </div>
+        <hr
+          class="my-6 border-t-2 border-gray-300 opacity-40 dark:border-gray-700"
+        />
+        <ul class="animate not-prose flex flex-col gap-4">
+          {
+            wine.map((entry) => (
+              <li>
+                <ArrowCard entry={entry} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </aside>
+  </Container>
+</Layout>

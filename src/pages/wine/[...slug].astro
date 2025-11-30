@@ -11,7 +11,7 @@ import Giscus from '@components/Giscus.astro'
 import Signature from '@components/Signature.astro'
 
 export async function getStaticPaths() {
-  const projects = (await getCollection('projects'))
+  const projects = (await getCollection('wine'))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   return projects.map((project) => ({
