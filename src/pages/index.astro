@@ -18,6 +18,11 @@ const projects: CollectionEntry<'projects'>[] = (
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE)
+
+const wine: CollectionEntry<'wine'>[] = (await getCollection('wine'))
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE)
 ---
 
 <Layout
@@ -66,6 +71,15 @@ const projects: CollectionEntry<'projects'>[] = (
           <ul class="not-prose flex flex-col gap-4">
             {
               projects.map((project) => (
+                <li>
+                  <ArrowCard entry={project} />
+                </li>
+              ))
+            }
+          </ul>
+          <ul class="not-prose mt-8 flex flex-col gap-4">
+            {
+              wine.map((project) => (
                 <li>
                   <ArrowCard entry={project} />
                 </li>

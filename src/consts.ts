@@ -25,6 +25,11 @@ export const PROJECTS: Metadata = {
     'A collection of my projects with links to repositories and live demos.',
 }
 
+export const WINE: Metadata = {
+  TITLE: 'Wine',
+  DESCRIPTION: 'Stuff about wine',
+}
+
 export const SOCIALS: Socials = [
   {
     NAME: 'GitHub',

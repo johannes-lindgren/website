@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/Container.astro'
+import ArrowCard from '@components/ArrowCard.astro'
+
+const wine = (await getCollection('wine'))
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+---
+
+<Layout
+  title="Wine Collection"
+  description="A selection of wine entries."
+>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-10">
+        <h1 class="animate font-semibold text-black dark:text-white">Wine</h1>
+        <p>Here are some wine-related things.</p>
+        <ul class="animate not-prose flex flex-col gap-4">
+          {
+            wine.map((entry) => (
+              <li>
+                <ArrowCard entry={entry} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </aside>
+  </Container>
+</Layout>

@@ -1,0 +1,54 @@
+---
+title: 'Wine tasting: Great Red Wines of France'
+description: 'Notes for a wine tasting event featuring exceptional red wines from France.'
+date: 2025-11-30
+draft: false
+---
+
+## Preface
+
+These are the most significant wine regions of France (the type of wine is indicated in parenthesis):
+
+1. Champagne (sparkling)
+2. Alsace (white)
+3. Loire (white)
+4. Burgundy (white & red)
+5. Beaujolais (red)
+6. Bordeaux (red, but also sweet and white)
+7. Rhône (red & white)
+8. Provence (rosé)
+9. Languedoc-Roussillon (red)
+
+![France Wine Regions](images/France.png)
+
+In this wine tasting event, we will taste wine from the most prestigious wine Regions, and the most prestigious _appellations_ therein:
+
+We will taste wines from the following regions:
+
+- 2x Burgundy
+- 2x Rhône
+- 2x Bordeaux
+
+We will learn:
+
+- Where wine gets its taste from
+- What the characteristics of the wines from these regions are
+- How to buy Wine in these regions
+
+But before we throw pearls to swine, let us first learn the very basics of wine tasting.
+
+And if you learn the most of all participants, there will be a price for you—at the end of the tasting, there will be a quiz.
+
+## Basic Wine Tasting
+
+> TODO
+
+Let us put this to practice!
+
+## Bourgogne (Burgundy)
+
+Three major regions:
+
+- Chablis: white
+- Mâconnais: white
+- Côte D’or: white & red
