@@ -9,6 +9,8 @@ import Link from '@components/Link.astro'
 import TableOfContents from '@components/TableOfContents.astro'
 import Giscus from '@components/Giscus.astro'
 import Signature from '@components/Signature.astro'
+import ExternalLinkIcon from '@components/ExternalLinkIcon.astro'
+import GitHubIcon from '@components/GitHubIcon.astro'
 
 export async function getStaticPaths() {
   const projects = (await getCollection('projects'))
@@ -54,30 +56,34 @@ const { Content, headings } = await project.render()
         (project.data.demoURL ||
           project.data.repoURL ||
           project.data.websiteURL) && (
-          <nav class="flex gap-1">
+          <nav class="flex gap-2 pt-1">
             {project.data.demoURL && (
               <Link
+                className="inline-flex items-center gap-1 text-nowrap"
                 href={project.data.demoURL}
                 external
               >
+                <ExternalLinkIcon />
                 demo
               </Link>
             )}
-            {project.data.demoURL && project.data.repoURL && <span>/</span>}
             {project.data.repoURL && (
               <Link
+                className="inline-flex items-center gap-1 text-nowrap"
                 href={project.data.repoURL}
                 external
               >
+                <GitHubIcon />
                 repo
               </Link>
             )}
-            {project.data.repoURL && project.data.websiteURL && <span>/</span>}
             {project.data.websiteURL && (
               <Link
+                className="inline-flex items-center gap-1 text-nowrap"
                 href={project.data.websiteURL}
                 external
               >
+                <ExternalLinkIcon />
                 website
               </Link>
             )}

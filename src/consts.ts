@@ -29,14 +29,3 @@ export const WINE: Metadata = {
   TITLE: 'Wine',
   DESCRIPTION: 'Stuff about wine',
 }
-
-export const SOCIALS: Socials = [
-  {
-    NAME: 'GitHub',
-    HREF: 'https://github.com/johannes-lindgren',
-  },
-  {
-    NAME: 'LinkedIn',
-    HREF: 'https://www.linkedin.com/in/johanneslindgren',
-  },
-]
