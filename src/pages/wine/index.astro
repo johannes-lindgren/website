@@ -6,9 +6,13 @@ import ArrowCard from '@components/ArrowCard.astro'
 import ArrowIcon from '@components/ArrowIcon.astro'
 import { WINE } from '@consts.ts'
 
-const wine = (await getCollection('wine'))
+const allWine = (await getCollection('wine'))
   .filter((entry) => !entry.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+
+// Separate Swedish and English articles
+const englishWine = allWine.filter((entry) => !entry.id.includes('.sv.'))
+const swedishWine = allWine.filter((entry) => entry.id.includes('.sv.'))
 ---
 
 <Layout
@@ -55,13 +59,29 @@ const wine = (await getCollection('wine'))
         />
         <ul class="animate not-prose flex flex-col gap-4">
           {
-            wine.map((entry) => (
+            englishWine.map((entry) => (
               <li>
                 <ArrowCard entry={entry} />
               </li>
             ))
           }
         </ul>
+        {
+          swedishWine.length > 0 && (
+            <>
+              <h2 class="text-xl font-semibold text-black dark:text-white">
+                På Svenska 🇸🇪
+              </h2>
+              <ul class="animate not-prose flex flex-col gap-4">
+                {swedishWine.map((entry) => (
+                  <li>
+                    <ArrowCard entry={entry} />
+                  </li>
+                ))}
+              </ul>
+            </>
+          )
+        }
       </div>
     </aside>
   </Container>

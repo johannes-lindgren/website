@@ -4,6 +4,12 @@ import Link from '@components/Link.astro'
 import { SITE } from '@consts'
 import Signature from './Signature.astro'
 import Key from './Key.astro'
+
+export interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
 ---
 
 <script is:inline>
@@ -17,7 +23,10 @@ import Key from './Key.astro'
   }
 </script>
 
-<header transition:persist>
+<header
+  transition:persist
+  class={className}
+>
   <Container>
     <div class="flex flex-wrap justify-between gap-y-2">
       <Link

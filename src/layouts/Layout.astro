@@ -1,25 +1,29 @@
 ---
-import Head from "@components/Head.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import PageFind from "@components/PageFind.astro";
-import { SITE } from "@consts";
+import Head from '@components/Head.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import PageFind from '@components/PageFind.astro'
+import { SITE } from '@consts'
 
 type Props = {
-  title: string;
-  description: string;
-};
+  title: string
+  description: string
+  class?: string
+}
 
-const { title, description } = Astro.props;
+const { title, description, class: className = '' } = Astro.props
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={`${title} | ${SITE.TITLE}`} description={description} />
+    <Head
+      title={`${title} | ${SITE.TITLE}`}
+      description={description}
+    />
   </head>
-  <body>
-    <Header />
+  <body class={className}>
+    <Header class="print:hidden" />
     <div class="mt-20 w-full flex-1">
       <div
         class="mx-auto flex h-full max-w-2xl flex-col gap-6 lg:grid lg:max-w-none lg:grid-cols-12"
@@ -44,7 +48,7 @@ const { title, description } = Astro.props;
           <main class="pb-4 pt-4">
             <slot />
           </main>
-          <Footer />
+          <Footer class="print:hidden" />
         </div>
       </div>
     </div>

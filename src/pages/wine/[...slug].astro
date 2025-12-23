@@ -14,12 +14,20 @@ export async function getStaticPaths() {
   const projects = (await getCollection('wine'))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: project,
-  }))
+  return projects.map((project) => {
+    // Handle language-specific files like index.sv.mdx
+    // Convert wine-evaluation-scorecard/index.sv to wine-evaluation-scorecard/sv
+    const slug = project.id
+      .replace(/\/index\.([a-z]{2})\.mdx?$/, '/$1')
+      .replace(/\/index\.mdx?$/, '')
+
+    return {
+      params: { slug },
+      props: project,
+    }
+  })
 }
-type Props = CollectionEntry<'projects'>
+type Props = CollectionEntry<'wine'>
 
 const project = Astro.props
 const { Content, headings } = await project.render()
@@ -34,11 +42,11 @@ const { Content, headings } = await project.render()
     slot={headings.length > 0 ? 'aside' : ''}
   />
   <Container>
-    <div class="animate">
-      <BackToPrevious href="/projects">Back to projects</BackToPrevious>
+    <div class="animate print:hidden">
+      <BackToPrevious href="/wine"> Back </BackToPrevious>
     </div>
     <div class="animate my-10 space-y-1">
-      <div class="flex items-center gap-1.5">
+      <div class="flex items-center gap-1.5 print:hidden">
         <div class="font-base text-sm">
           <FormattedDate date={project.data.date} />
         </div>
@@ -50,45 +58,11 @@ const { Content, headings } = await project.render()
       <h1 class="text-3xl font-semibold text-black dark:text-white">
         {project.data.title}
       </h1>
-      {
-        (project.data.demoURL ||
-          project.data.repoURL ||
-          project.data.websiteURL) && (
-          <nav class="flex gap-1">
-            {project.data.demoURL && (
-              <Link
-                href={project.data.demoURL}
-                external
-              >
-                demo
-              </Link>
-            )}
-            {project.data.demoURL && project.data.repoURL && <span>/</span>}
-            {project.data.repoURL && (
-              <Link
-                href={project.data.repoURL}
-                external
-              >
-                repo
-              </Link>
-            )}
-            {project.data.repoURL && project.data.websiteURL && <span>/</span>}
-            {project.data.websiteURL && (
-              <Link
-                href={project.data.websiteURL}
-                external
-              >
-                website
-              </Link>
-            )}
-          </nav>
-        )
-      }
     </div>
     <article class="animate">
       <Content />
       <Signature class="mt-12 text-right text-xl font-extralight" />
-      <div class="mt-12">
+      <div class="mt-12 print:hidden">
         <Giscus />
       </div>
     </article>
