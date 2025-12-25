@@ -5,10 +5,10 @@ import Container from '@components/Container.astro'
 import FormattedDate from '@components/FormattedDate.astro'
 import { readingTime } from '@lib/utils'
 import BackToPrevious from '@components/BackToPrevious.astro'
-import Link from '@components/Link.astro'
 import TableOfContents from '@components/TableOfContents.astro'
 import Giscus from '@components/Giscus.astro'
 import Signature from '@components/Signature.astro'
+import LanguageSwitcher from '@components/LanguageSwitcher.astro'
 
 export async function getStaticPaths() {
   const projects = (await getCollection('wine'))
@@ -27,10 +27,52 @@ export async function getStaticPaths() {
     }
   })
 }
+
+// Helper function to detect available languages for current article
+async function getAvailableLanguages(currentSlug: string) {
+  const allWineContent = await getCollection('wine')
+
+  // Extract base slug (without language)
+  const baseSlug = currentSlug.replace(/\/(en|sv)$/, '')
+  const currentLang = currentSlug.match(/\/(en|sv)$/)?.pop() || 'en'
+
+  // Find all translations of this article
+  const translations = allWineContent.filter((item) => {
+    const itemSlug = item.id
+      .replace(/\/index\.([a-z]{2})\.mdx?$/, '/$1')
+      .replace(/\/index\.mdx?$/, '')
+    const itemBaseSlug = itemSlug.replace(/\/(en|sv)$/, '')
+    return itemBaseSlug === baseSlug
+  })
+
+  const languageLabels: Record<string, string> = {
+    en: 'EN',
+    sv: 'SV',
+  }
+
+  return translations.map((item) => {
+    const slug = item.id
+      .replace(/\/index\.([a-z]{2})\.mdx?$/, '/$1')
+      .replace(/\/index\.mdx?$/, '')
+    const lang = slug.match(/\/(en|sv)$/)?.pop() || 'en'
+
+    return {
+      lang,
+      label: languageLabels[lang] || lang.toUpperCase(),
+      slug,
+    }
+  })
+}
 type Props = CollectionEntry<'wine'>
 
 const project = Astro.props
 const { Content, headings } = await project.render()
+
+// Get current slug and available languages
+const currentSlug = project.id
+  .replace(/\/index\.([a-z]{2})\.mdx?$/, '/$1')
+  .replace(/\/index\.mdx?$/, '')
+const availableLanguages = await getAvailableLanguages(currentSlug)
 ---
 
 <Layout
@@ -55,9 +97,17 @@ const { Content, headings } = await project.render()
           {readingTime(project.body)}
         </div>
       </div>
-      <h1 class="text-3xl font-semibold text-black dark:text-white">
-        {project.data.title}
-      </h1>
+      <div class="flex items-center justify-between gap-4">
+        <h1 class="text-3xl font-semibold text-black dark:text-white">
+          {project.data.title}
+        </h1>
+        <div class="print:hidden">
+          <LanguageSwitcher
+            currentSlug={currentSlug}
+            availableLanguages={availableLanguages}
+          />
+        </div>
+      </div>
     </div>
     <article class="animate">
       <Content />

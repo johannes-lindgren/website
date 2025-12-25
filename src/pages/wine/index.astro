@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content'
 import Layout from '@layouts/Layout.astro'
 import Container from '@components/Container.astro'
-import ArrowCard from '@components/ArrowCard.astro'
 import ArrowIcon from '@components/ArrowIcon.astro'
 import { WINE } from '@consts.ts'
 
@@ -10,9 +9,39 @@ const allWine = (await getCollection('wine'))
   .filter((entry) => !entry.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
-// Separate Swedish and English articles
-const englishWine = allWine.filter((entry) => !entry.id.includes('.sv.'))
-const swedishWine = allWine.filter((entry) => entry.id.includes('.sv.'))
+// Group articles by base slug to detect translations
+const articleGroups = new Map()
+
+allWine.forEach((entry) => {
+  // Get base slug (without language suffix)
+  const baseSlug = entry.id
+    .replace(/\/index\.([a-z]{2})\.mdx?$/, '')
+    .replace(/\/index\.mdx?$/, '')
+
+  if (!articleGroups.has(baseSlug)) {
+    articleGroups.set(baseSlug, {
+      english: null,
+      translations: [],
+    })
+  }
+
+  const group = articleGroups.get(baseSlug)
+
+  if (entry.id.includes('.sv.')) {
+    group.translations.push({ lang: 'sv', label: 'sv', entry })
+  } else {
+    group.english = entry
+  }
+})
+
+// Get only English articles with their translation info
+const wineWithTranslations = Array.from(articleGroups.values())
+  .filter((group) => group.english !== null)
+  .map((group) => ({
+    entry: group.english,
+    translations: group.translations,
+  }))
+  .sort((a, b) => b.entry.data.date.valueOf() - a.entry.data.date.valueOf())
 ---
 
 <Layout
@@ -59,29 +88,44 @@ const swedishWine = allWine.filter((entry) => entry.id.includes('.sv.'))
         />
         <ul class="animate not-prose flex flex-col gap-4">
           {
-            englishWine.map((entry) => (
-              <li>
-                <ArrowCard entry={entry} />
-              </li>
-            ))
+            wineWithTranslations.map(({ entry, translations }) => {
+              const slug = entry.id
+                .replace(/\/index\.([a-z]{2})\.mdx?$/, '/$1')
+                .replace(/\/index\.mdx?$/, '')
+
+              return (
+                <li class="relative">
+                  <a
+                    href={`/wine/${slug}`}
+                    class="not-prose group relative flex flex-nowrap rounded-lg border border-black/15 px-4 py-3 pr-10 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+                  >
+                    <div class="flex flex-1 flex-col truncate">
+                      <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="font-semibold">{entry.data.title}</div>
+                        <div>
+                          {translations.length > 0 && (
+                            <div class="flex items-center gap-1.5 text-xs">
+                              <span class="text-black/50 dark:text-white/50">
+                                Also in:
+                              </span>
+                              {translations.map((t) => (
+                                <span class="rounded bg-black/10 px-2 py-0.5 font-medium text-black/70 dark:bg-white/10 dark:text-white/70">
+                                  {t.label}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div class="text-sm">{entry.data.description}</div>
+                    </div>
+                    <ArrowIcon class="absolute right-2 top-1/2 size-5 -translate-y-1/2 fill-none stroke-current stroke-2" />
+                  </a>
+                </li>
+              )
+            })
           }
         </ul>
-        {
-          swedishWine.length > 0 && (
-            <>
-              <h2 class="text-xl font-semibold text-black dark:text-white">
-                På Svenska 🇸🇪
-              </h2>
-              <ul class="animate not-prose flex flex-col gap-4">
-                {swedishWine.map((entry) => (
-                  <li>
-                    <ArrowCard entry={entry} />
-                  </li>
-                ))}
-              </ul>
-            </>
-          )
-        }
       </div>
     </aside>
   </Container>
