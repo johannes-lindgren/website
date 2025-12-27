@@ -1,27 +1,35 @@
-<div class="giscus"></div>
+---
+export interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
+---
+
+<div class={`giscus ${className}`}></div>
 
 <script is:inline>
   // Listen for script load event to call setGiscusTheme
-  const giscusScript = document.createElement("script");
-  giscusScript.src = "https://giscus.app/client.js";
-  giscusScript.setAttribute("data-repo", "johannes-lindgren/website");
-  giscusScript.setAttribute("data-repo-id", "R_kgDOM4gzTA");
-  giscusScript.setAttribute("data-category", "Announcements");
-  giscusScript.setAttribute("data-category-id", "DIC_kwDOM4gzTM4Ci7_C");
-  giscusScript.setAttribute("data-mapping", "pathname");
-  giscusScript.setAttribute("data-strict", "1");
-  giscusScript.setAttribute("data-reactions-enabled", "1");
-  giscusScript.setAttribute("data-emit-metadata", "0");
-  giscusScript.setAttribute("data-input-position", "top");
-  giscusScript.setAttribute("data-theme", "preferred_color_scheme");
-  giscusScript.setAttribute("data-lang", "en");
-  giscusScript.setAttribute("data-loading", "lazy");
-  giscusScript.crossOrigin = "anonymous";
-  giscusScript.async = true;
+  const giscusScript = document.createElement('script')
+  giscusScript.src = 'https://giscus.app/client.js'
+  giscusScript.setAttribute('data-repo', 'johannes-lindgren/website')
+  giscusScript.setAttribute('data-repo-id', 'R_kgDOM4gzTA')
+  giscusScript.setAttribute('data-category', 'Announcements')
+  giscusScript.setAttribute('data-category-id', 'DIC_kwDOM4gzTM4Ci7_C')
+  giscusScript.setAttribute('data-mapping', 'pathname')
+  giscusScript.setAttribute('data-strict', '1')
+  giscusScript.setAttribute('data-reactions-enabled', '1')
+  giscusScript.setAttribute('data-emit-metadata', '0')
+  giscusScript.setAttribute('data-input-position', 'top')
+  giscusScript.setAttribute('data-theme', 'preferred_color_scheme')
+  giscusScript.setAttribute('data-lang', 'en')
+  giscusScript.setAttribute('data-loading', 'lazy')
+  giscusScript.crossOrigin = 'anonymous'
+  giscusScript.async = true
 
   giscusScript.onload = () => {
-    setGiscusTheme();
-  };
+    setGiscusTheme()
+  }
 
-  document.body.appendChild(giscusScript);
+  document.body.appendChild(giscusScript)
 </script>

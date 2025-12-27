@@ -1,0 +1,71 @@
+---
+title: 'Wine Evaluation Scorecard'
+description: 'A structured scorecard for evaluating wines based on appearance, smell, palate, and conclusion.'
+date: 2025-11-30
+draft: false
+---
+
+export function EmptyCell() {
+  return (
+    <>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </>
+  )
+}
+
+<table>
+  <tr>
+    <th colspan="2">Appearance</th>
+  </tr>
+  <tr>
+    <td>Color</td>
+    <td>Pale · Medium · Deep</td>
+  </tr>
+  <tr>
+    <th colspan="2">Nose</th>
+  </tr>
+  <tr>
+    <td>Aroma*</td>
+    <td>
+      <EmptyCell />
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2">Palate</th>
+  </tr>
+  <tr>
+    <td>Acidity</td>
+    <td>Low · Medium · High</td>
+  </tr>
+  <tr>
+    <td>Tannins</td>
+    <td>Low · Medium · High</td>
+  </tr>
+  <tr>
+    <td>Body</td>
+    <td>Light · Medium · Full</td>
+  </tr>
+  <tr>
+    <td>Flavors*</td>
+    <td>
+      <EmptyCell />
+    </td>
+  </tr>
+  <tr>
+    <td>Finish</td>
+    <td>Short · Medium · Long</td>
+  </tr>
+  <tr>
+    <th colspan="2">Conclusion</th>
+  </tr>
+  <tr>
+    <td>Score</td>
+    <td>1 · 2 · 3 · 4 · 5 · 6 · 7 · 8 · 9 · 10</td>
+  </tr>
+</table>
+
+\*See the [Wine Tasting Aromas](/wine/wine-tasting-cheatsheet) for reference.

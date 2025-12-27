@@ -1,0 +1,36 @@
+---
+interface Props {
+  currentSlug: string
+  availableLanguages: { lang: string; label: string; slug: string }[]
+}
+
+const { currentSlug, availableLanguages } = Astro.props
+---
+
+{
+  availableLanguages.length > 1 && (
+    <div class="flex items-center gap-2">
+      <span class="text-sm text-gray-600 dark:text-gray-400">Language:</span>
+      <div class="flex gap-1">
+        {availableLanguages.map(({ label, slug }) => {
+          const isActive = slug === currentSlug
+          return (
+            <a
+              href={`/wine/${slug}`}
+              class:list={[
+                'rounded-md px-3 py-1 text-sm transition-colors',
+                isActive
+                  ? 'bg-black font-medium text-white dark:bg-white dark:text-black'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600',
+              ]}
+              aria-label={`Switch to ${label}`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {label}
+            </a>
+          )
+        })}
+      </div>
+    </div>
+  )
+}

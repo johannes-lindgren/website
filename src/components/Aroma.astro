@@ -1,0 +1,28 @@
+---
+const aromaColors = {
+  earthy: '#b59b6f',
+  'red-fruit': '#e35c6e',
+  'black-fruit': '#2c3e80',
+  herbal: '#b19157',
+  oaky: '#8c5433',
+  ageing: 'rgb(158, 110, 64)',
+  floral: '#f86676',
+  microbio: '#c38349',
+  vegetal: '#9c9a2a',
+  raisin: '#b9655d',
+  'tree-fruit': '#819632',
+  citrus: '#ee803e',
+  tropical: '#e99228',
+  'stone-fruit': '#819632',
+  animal: '#6f4e37',
+}
+
+type AromaType = keyof typeof aromaColors
+
+interface Props {
+  type: AromaType
+}
+const { type } = Astro.props
+---
+
+<span style={`font-weight: bold; color: ${aromaColors[type]}`}><slot /></span>

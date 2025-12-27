@@ -170,3 +170,10 @@ pre {
 .enlargeable-img {
   cursor: zoom-in;
 }
+
+/* Print styles */
+@media print {
+  html {
+    font-size: 10pt;
+  }
+}
