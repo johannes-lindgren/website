@@ -1,0 +1,18 @@
+---
+// PageBreak component for print media
+---
+
+<div class="page-break"></div>
+
+<style>
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  @media screen {
+    .page-break {
+      display: none;
+    }
+  }
+</style>
